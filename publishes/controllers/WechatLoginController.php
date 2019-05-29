@@ -3,7 +3,6 @@ namespace App\Http\Controllers\Auth;
 
 use XiaohuiLam\Laravel\WechatAppLogin\Http\Controllers\Auth\WechatLoginController as BaseWechatLoginController;
 use Illuminate\Support\Str;
-use Carbon\Carbon;
 
 class WechatLoginController extends BaseWechatLoginController
 {

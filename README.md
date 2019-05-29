@@ -13,6 +13,27 @@ php artisan vendor:publish --tag=wechat-login
 ```
 
 ## 使用
+
+### 接口使用
+
+在 `routes/wechat.php` 下面这个组中间，放置你的需要登录的 api 路由
+```php
+Route::group(['middleware' => ['auth:wechat']], function () {
+    // The routes need login
+});
+```
+
+### 修改注册用户逻辑
+
+在 `app/Http/Controllers/Auth/WechatLoginController.php` 中修改
+
+方法为：
+- `protected function registerUser($credential)` 完整的注册逻辑
+- `protected function userAttributes($credential)` 用仅需修改用户属性时，只需覆盖此方法即可
+
+
+### 在小程序JS使用
+
 在
 ```bash
 php artisan tinker
