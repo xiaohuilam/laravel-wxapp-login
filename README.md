@@ -12,6 +12,32 @@ composer require xiaohuilam/laravel-wxapp-login -vvv
 php artisan vendor:publish --tag=wechat-login
 ```
 
+## 表结构、模型改动
+laravel-wxapp-login 需要在 `users` 表中添加 `openid` 的字段，所以需要运行 [`database/migrations/2019_05_28_060312_users_add_openid.php`](https://github.com/xiaohuilam/laravel-wxapp-login/blob/master/publishes/migrations/2019_05_28_060312_users_add_openid.php)
+```bash
+php artisan migrate
+```
+
+另外，需要在用户模型中，将 `openid` 加入到 `$fillable` 属性:
+
+打开 `app\User.php` （如果你修改过模型位置，请以自己项目实际位置为准）
+```php
+class User extends Authenticatable
+{
+    use Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        //... 你原先的字段
+        'openid',
+    ];
+}
+```
+
 ## 配置
 ```env
 WECHAT_MINI_PROGRAM_APPID=#小程序的appid
