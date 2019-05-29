@@ -12,14 +12,25 @@ composer require xiaohuilam/laravel-wxapp-login -vvv
 php artisan vendor:publish --tag=wechat-login
 ```
 
+## 配置
+```env
+WECHAT_MINI_PROGRAM_APPID=#小程序的appid
+WECHAT_MINI_PROGRAM_SECRET=#小程序的secret
+```
+
 ## 使用
 
 ### 接口使用
 
-在 `routes/wechat.php` 下面这个组中间，放置你的需要登录的 api 路由
+在 `routes/wechat.php`
 ```php
+Route::group(['middleware' => ['guest']], function () {
+    Route::post('login', 'Auth\\WechatLoginController@login')->name('wechat.login');
+    //这里放未登录的api
+});
+
 Route::group(['middleware' => ['auth:wechat']], function () {
-    // The routes need login
+    //这里放置你的需要登录的 api 路由，如用户资料API、修改资料API...
 });
 ```
 
