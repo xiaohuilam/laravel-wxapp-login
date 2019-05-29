@@ -17,9 +17,9 @@ class WechatLoginController extends BaseWechatLoginController
     {
         $attributes = $credential;
 
-        $attributes['email'] = Str::random(8) . '@wechat.com';
-        $attributes['email_verified_at'] = Carbon::now();
-        $attributes['password'] = Str::random(8);
+        $name = Str::random(8);
+        $attributes['name'] = $name;
+        $attributes['email'] = $name . '@wechat.com';
 
         return $attributes;
     }
