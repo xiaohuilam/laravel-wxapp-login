@@ -40,9 +40,9 @@ class WechatAppLoginServiceProvider extends ServiceProvider
     protected function publishFiles()
     {
         $this->publishes([
-            dirname(__DIR__) . '/guard/WechatGuard.php' => app_path('Auth/WechatGuard.php'),
-            dirname(__DIR__) . '/controllers/WechatLoginController.php' => app_path('Http/Controllers/Auth/WechatLoginController.php'),
-            dirname(__DIR__) . '/routes/wechat.php' => base_path('routes/wechat.php'),
+            dirname(__DIR__) . '/publishes/guard/WechatGuard.php' => app_path('Auth/WechatGuard.php'),
+            dirname(__DIR__) . '/publishes/controllers/WechatLoginController.php' => app_path('Http/Controllers/Auth/WechatLoginController.php'),
+            dirname(__DIR__) . '/publishes/routes/wechat.php' => base_path('routes/wechat.php'),
         ], 'wechat-login');
     }
 
