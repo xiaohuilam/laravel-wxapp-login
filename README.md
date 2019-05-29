@@ -99,3 +99,6 @@ wx.login({
 
 ## 授权
 MIT
+
+## 鸣谢
+- Overtrue's [laravel-easywechat](https://github.com/overtrue/laravel-wechat)
