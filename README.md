@@ -71,6 +71,8 @@ Route::group(['middleware' => ['auth:wechat']], function () {
 
 ### 在小程序JS使用
 
+**Restful API**
+
 在
 ```bash
 php artisan tinker
@@ -95,6 +97,38 @@ wx.login({
       })
   },
 })
+```
+
+**Websocket**
+
+小程序代码
+```javascript
+import Echo from 'laravel-echo'
+let io = require('weapp.socket.io')
+
+const echo = new Echo({
+  client: io,
+  broadcaster: 'socket.io',
+  host: '??',
+  auth: {
+    headers: {
+      Authorization: 'Bearer ' + '上面取得的 token',
+    },
+  },
+});
+
+echo.private(`channel.${user_id}`)
+  .listen(`broadcastAs 后的名字`, (e) => {
+    console.log(e);
+  });
+```
+
+注册 channel.php
+```php
+Broadcast::channel('channel.{id}', function ($user, $id) {
+    return $user->id == $id;
+}, ['guards' => ['wechat',]]); //一定要指定 guards!
+
 ```
 
 ## 授权
