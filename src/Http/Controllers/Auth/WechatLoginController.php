@@ -34,6 +34,7 @@ class WechatLoginController extends Controller
             $this->registerUser($credential);
         }
 
+        $this->afterLogin($user);
         return response()->success(['token' => encrypt($openid),]);
     }
 
@@ -52,6 +53,7 @@ class WechatLoginController extends Controller
         $user = new $user_class($this->userAttributes($credential));
         $user->save();
 
+        $this->afterRegister($user);
         return $user;
     }
 
@@ -64,5 +66,25 @@ class WechatLoginController extends Controller
     protected function userAttributes($credential)
     {
         return $credential;
+    }
+
+    /**
+     * 登陆后触发
+     *
+     * @param \Illuminate\Foundation\Auth\User $user
+     * @return void
+     */
+    protected function afterLogin($user)
+    {
+    }
+
+    /**
+     * 注册后触发
+     *
+     * @param \Illuminate\Foundation\Auth\User $user
+     * @return void
+     */
+    protected function afterRegister($user)
+    {
     }
 }
