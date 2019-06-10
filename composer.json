@@ -12,7 +12,8 @@
     "minimum-stability": "stable",
     "require": {
         "laravel/framework": "5.*",
-        "overtrue/laravel-wechat": "^5.0"
+        "overtrue/laravel-wechat": "^5.0",
+        "xiaohuilam/laravel-response-success": "*"
     },
     "autoload": {
         "psr-4": {
