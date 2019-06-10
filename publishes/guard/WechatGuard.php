@@ -3,6 +3,7 @@
 namespace App\Auth;
 
 use Illuminate\Auth\TokenGuard as BaseTokenGuard;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Illuminate\Auth\AuthenticationException;
 
 class WechatGuard extends BaseTokenGuard
@@ -18,7 +19,10 @@ class WechatGuard extends BaseTokenGuard
         try {
             $token = decrypt($token);
         } catch (\Exception $e) {
-            throw new AuthenticationException();
+            if (class_exists('AuthenticationException')) {
+                throw new AuthenticationException();
+            }
+            throw new HttpException(401, '登录失效', $e, [], 401);
         }
 
         return $token;
