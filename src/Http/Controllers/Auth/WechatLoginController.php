@@ -29,9 +29,10 @@ class WechatLoginController extends Controller
         }
 
         $credential = ['openid' => $openid];
+        $user = null;
 
         if (!auth()->guard('wechat')->attempt($credential) || !$user = auth()->guard('wechat')->user()) {
-            $this->registerUser($credential);
+            $user = $this->registerUser($credential);
         }
 
         $this->afterLogin($user, $credential);
