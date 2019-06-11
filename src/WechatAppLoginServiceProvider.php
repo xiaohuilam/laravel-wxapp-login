@@ -55,7 +55,7 @@ class WechatAppLoginServiceProvider extends ServiceProvider
      */
     protected function mapWechatRoutes()
     {
-        if (class_exists(WechatGuard::class)) {
+        if (!class_exists(WechatGuard::class)) {
             return;
         }
 
