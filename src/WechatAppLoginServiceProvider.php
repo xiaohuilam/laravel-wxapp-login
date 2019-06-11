@@ -55,6 +55,10 @@ class WechatAppLoginServiceProvider extends ServiceProvider
      */
     protected function mapWechatRoutes()
     {
+        if (class_exists(WechatGuard::class)) {
+            return;
+        }
+
         Route::prefix('api')
             ->namespace($this->namespace)
             ->group(base_path('routes/wechat.php'));
