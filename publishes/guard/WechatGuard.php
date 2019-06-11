@@ -19,7 +19,7 @@ class WechatGuard extends BaseTokenGuard
         try {
             $token = decrypt($token);
         } catch (\Exception $e) {
-            if (class_exists('AuthenticationException')) {
+            if (class_exists(AuthenticationException::class)) {
                 throw new AuthenticationException();
             }
             throw new HttpException(401, '登录失效', $e, [], 401);
