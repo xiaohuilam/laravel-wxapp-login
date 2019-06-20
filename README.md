@@ -1,4 +1,6 @@
 # Laravel 快速接入微信小程序
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fxiaohuilam%2Flaravel-wxapp-login.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fxiaohuilam%2Flaravel-wxapp-login?ref=badge_shield)
+
 ---
 
 ## 安装
@@ -136,3 +138,7 @@ MIT
 
 ## 鸣谢
 - Overtrue's [laravel-easywechat](https://github.com/overtrue/laravel-wechat)
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fxiaohuilam%2Flaravel-wxapp-login.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fxiaohuilam%2Flaravel-wxapp-login?ref=badge_large)
