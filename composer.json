@@ -19,6 +19,7 @@
         "phpunit/phpunit": "*",
         "laravel/laravel": "5.*",
         "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "*",
         "laravel/browser-kit-testing": "*",
         "squizlabs/php_codesniffer": "*"
     },
