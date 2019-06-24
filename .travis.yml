@@ -1,11 +1,4 @@
 language: php
-php:
-  - '5.6'
-  - '7.0'
-  - '7.1'
-  - '7.2'
-  - '7.3'
-  - '7.4snapshot'
 matrix:
   include:
     - php: 5.6
@@ -82,10 +75,10 @@ matrix:
       env: LARAVEL='5.9.*'
   fast_finish: true
 before_install:
-  - travis_retry composer self-update
-  - travis_retry composer require "illuminate/contracts:${LARAVEL}" --no-interaction --no-update
+  - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer self-update
+  - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer require "illuminate/contracts:${LARAVEL}" --no-interaction --no-update
 install:
-  - travis_retry composer install --prefer-dist --no-interaction --no-suggest
+  - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer install --prefer-dist --no-interaction --no-suggest
 script:
   - ./vendor/bin/phpcs
   - ./vendor/bin/phpunit
