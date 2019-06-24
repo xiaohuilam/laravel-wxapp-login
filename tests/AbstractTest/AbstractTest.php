@@ -64,9 +64,7 @@ abstract class AbstractTest extends TestCase
 
     protected function migrateTables()
     {
+        copy(__DIR__ . '/../../publishes/migrations/2019_05_28_060312_users_add_openid.php', __DIR__ . '/../../vendor/laravel/laravel/database/migrations/2019_05_28_060312_users_add_openid.php');
         Artisan::call('migrate');
-        Artisan::call('migrate', [
-            '--path' => '../../../publishes/migrations/2019_05_28_060312_users_add_openid.php'
-        ]);
     }
 }
