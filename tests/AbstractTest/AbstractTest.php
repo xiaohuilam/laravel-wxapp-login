@@ -1,7 +1,6 @@
 <?php
 namespace XiaohuiLam\Laravel\WechatAppLogin\Test\AbstractTest;
 
-use Tests\TestCase;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Contracts\Console\Kernel;
@@ -15,7 +14,7 @@ use Overtrue\LaravelWeChat\ServiceProvider as EasywechatServiceProvider;
  * @method \Illuminate\Foundation\Testing\TestResponse get($uri, $options)
  * @method \Illuminate\Foundation\Testing\TestResponse post($uri, $options)
  */
-abstract class AbstractTest extends TestCase
+abstract class AbstractTest extends InterTestCase
 {
     use ControllerNamespaces;
 

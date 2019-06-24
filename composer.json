@@ -32,10 +32,10 @@
             "XiaohuiLam\\Laravel\\WechatAppLogin\\Test\\": "tests/",
             "App\\": "tests/Authencatable/",
             "App\\Auth\\": "publishes/guard/",
-            "App\\Http\\Controllers\\Auth\\": "publishes/controllers/"
+            "App\\Http\\Controllers\\Auth\\": "publishes/controllers/",
+            "Tests\\": "vendor/laravel/laravel/tests/"
         },
         "files": [
-            "vendor/laravel/laravel/tests/CreatesApplication.php",
             "vendor/laravel/laravel/tests/TestCase.php"
         ]
     },
