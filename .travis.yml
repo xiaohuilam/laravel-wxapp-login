@@ -80,7 +80,7 @@ matrix:
 before_install:
   - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer self-update
   - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer require "laravel/laravel:${LARAVEL}" --no-interaction --no-update
-  - php scripts/scripts/mergeRequireDev.php
+  - php scripts/mergeRequireDev.php
 
 install:
   - COMPOSER_MEMORY_LIMIT=-1 travis_retry composer install --prefer-dist --no-interaction --no-suggest
