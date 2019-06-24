@@ -29,9 +29,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Http\\Controllers\\Auth\\": "publishes/controllers/",
-            "App\\Auth\\": "publishes/guard/",
             "XiaohuiLam\\Laravel\\WechatAppLogin\\Test\\": "tests/",
+            "App\\": "tests/Authencatable/",
+            "App\\Auth\\": "publishes/guard/",
+            "App\\Http\\Controllers\\Auth\\": "publishes/controllers/",
             "Tests\\": "vendor/laravel/laravel/tests/"
         }
     },

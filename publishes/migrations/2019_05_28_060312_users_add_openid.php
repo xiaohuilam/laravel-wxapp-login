@@ -14,7 +14,7 @@ class UsersAddOpenid extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('openid', 50)->comment('用户openid');
+            $table->string('openid', 50)->nullable()->comment('用户openid');
         });
     }
 

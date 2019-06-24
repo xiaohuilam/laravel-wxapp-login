@@ -23,7 +23,7 @@ class WechatLoginController extends Controller
          * @var \EasyWeChat\MiniProgram\Application $wechat
          */
         $response = Facade::login($code);
-        $openid = $response['openid'];
+        $openid = data_get($response, 'openid');
         if (!$openid) {
             abort(403, 'bad code');
         }

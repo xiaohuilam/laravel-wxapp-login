@@ -1,1 +1,0 @@
-C:37:"PHPUnit\Runner\DefaultTestResultCache":286:{a:2:{s:7:"defects";a:2:{s:34:"Tests\Feature\LoginTest::testLogin";i:4;s:59:"XiaohuiLam\Laravel\WechatAppLogin\Test\LoginTest::testLogin";i:3;}s:5:"times";a:2:{s:34:"Tests\Feature\LoginTest::testLogin";d:0.111;s:59:"XiaohuiLam\Laravel\WechatAppLogin\Test\LoginTest::testLogin";d:0.187;}}}

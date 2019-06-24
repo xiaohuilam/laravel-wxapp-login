@@ -2,12 +2,14 @@
 namespace XiaohuiLam\Laravel\WechatAppLogin\Test\AbstractTest;
 
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Contracts\Console\Kernel;
-use XiaohuiLam\Laravel\WechatAppLogin\WechatAppLoginServiceProvider;
-use XiaohuiLam\Laravel\WechatAppLogin\Traits\ControllerNamespaces;
 use Illuminate\Support\Facades\Route;
-use Overtrue\LaravelWeChat\ServiceProvider;
+use Illuminate\Support\Facades\Artisan;
+use Illuminate\Contracts\Console\Kernel;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Xiaohuilam\LaravelResponseSuccess\ResponseServiceProvider;
+use XiaohuiLam\Laravel\WechatAppLogin\Traits\ControllerNamespaces;
+use XiaohuiLam\Laravel\WechatAppLogin\WechatAppLoginServiceProvider;
+use Overtrue\LaravelWeChat\ServiceProvider as EasywechatServiceProvider;
 
 /**
  * @method \Illuminate\Foundation\Testing\TestResponse get($uri, $options)
@@ -24,6 +26,9 @@ abstract class AbstractTest extends TestCase
      */
     public function createApplication()
     {
+        /**
+         * @var \Illuminate\Foundation\Application $app
+         */
         $app = require __DIR__ . '/../../vendor/laravel/laravel/bootstrap/app.php';
 
         $app->make(Kernel::class)->bootstrap();
@@ -41,9 +46,11 @@ abstract class AbstractTest extends TestCase
         ]);
 
         $app->register(WechatAppLoginServiceProvider::class);
-        $app->register(ServiceProvider::class);
+        $app->register(EasywechatServiceProvider::class);
+        $app->register(ResponseServiceProvider::class);
 
         $this->registerRoutes();
+        $this->migrateTables();
 
         return $app;
     }
@@ -53,5 +60,13 @@ abstract class AbstractTest extends TestCase
         Route::prefix('api')
             ->namespace($this->namespace)
             ->group( __DIR__ . '/../../publishes/routes/wechat.php');
+    }
+
+    protected function migrateTables()
+    {
+        Artisan::call('migrate');
+        Artisan::call('migrate', [
+            '--path' => '../../../publishes/migrations/2019_05_28_060312_users_add_openid.php'
+        ]);
     }
 }
