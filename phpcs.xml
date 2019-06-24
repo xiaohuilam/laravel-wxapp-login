@@ -97,8 +97,7 @@
     <exclude-pattern>.vscode/</exclude-pattern>
     <exclude-pattern>vendor/</exclude-pattern>
     <exclude-pattern>node_modules/</exclude-pattern>
-    <exclude-pattern>resources/views/</exclude-pattern>
-    <exclude-pattern>tests/migrations/</exclude-pattern>
+    <exclude-pattern>publishes/migrations/</exclude-pattern>
     <arg name="report" value="full"/>
     <arg name="colors"/>
     <arg value="p"/>

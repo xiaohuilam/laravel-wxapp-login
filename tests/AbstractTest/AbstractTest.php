@@ -59,7 +59,7 @@ abstract class AbstractTest extends TestCase
     {
         Route::prefix('api')
             ->namespace($this->namespace)
-            ->group( __DIR__ . '/../../publishes/routes/wechat.php');
+            ->group(__DIR__ . '/../../publishes/routes/wechat.php');
     }
 
     protected function migrateTables()

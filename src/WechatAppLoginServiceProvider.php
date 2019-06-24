@@ -73,7 +73,7 @@ class WechatAppLoginServiceProvider extends ServiceProvider
      */
     protected function extendAuthGuardConfig()
     {
-        config()->set('auth.guards.wechat',[
+        config()->set('auth.guards.wechat', [
             'driver' => 'wechat',
             'provider' => 'users',
             'input_key' => 'token',
