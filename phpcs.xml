@@ -98,6 +98,8 @@
     <exclude-pattern>vendor/</exclude-pattern>
     <exclude-pattern>node_modules/</exclude-pattern>
     <exclude-pattern>publishes/migrations/</exclude-pattern>
+    <exclude-pattern>scripts/</exclude-pattern>
+    <exclude-pattern>tests/AbstractTest/InterTestCase.php</exclude-pattern>
     <arg name="report" value="full"/>
     <arg name="colors"/>
     <arg value="p"/>
