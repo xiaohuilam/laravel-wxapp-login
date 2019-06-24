@@ -15,16 +15,34 @@
         "xiaohuilam/easywechat-adpter": "*",
         "xiaohuilam/laravel-response-success": "*"
     },
+    "require-dev": {
+        "phpunit/phpunit": "*",
+        "laravel/laravel": "5.*",
+        "fzaninotto/faker": "~1.4",
+        "laravel/browser-kit-testing": "*",
+        "squizlabs/php_codesniffer": "*"
+    },
     "autoload": {
         "psr-4": {
             "XiaohuiLam\\Laravel\\WechatAppLogin\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "App\\Http\\Controllers\\Auth\\": "publishes/controllers/",
+            "App\\Auth\\": "publishes/guard/",
+            "XiaohuiLam\\Laravel\\WechatAppLogin\\Test\\": "tests/",
+            "Tests\\": "vendor/laravel/laravel/tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
                 "XiaohuiLam\\Laravel\\WechatAppLogin\\WechatAppLoginServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "WechatLogin": "XiaohuiLam\\Laravel\\WechatAppLogin\\Facade"
+            }
         }
     }
 }

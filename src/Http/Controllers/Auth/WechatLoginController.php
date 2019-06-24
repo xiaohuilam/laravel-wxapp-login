@@ -3,6 +3,7 @@
 namespace XiaohuiLam\Laravel\WechatAppLogin\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use XiaohuiLam\Laravel\WechatAppLogin\Facade;
 
 class WechatLoginController extends Controller
 {
@@ -21,8 +22,7 @@ class WechatLoginController extends Controller
         /**
          * @var \EasyWeChat\MiniProgram\Application $wechat
          */
-        $wechat = app('wechat.mini_program');
-        $response = $wechat->auth->session($code);
+        $response = Facade::login($code);
         $openid = $response['openid'];
         if (!$openid) {
             abort(403, 'bad code');

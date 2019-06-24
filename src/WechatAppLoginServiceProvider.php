@@ -6,17 +6,11 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
 use App\Auth\WechatGuard;
+use XiaohuiLam\Laravel\WechatAppLogin\Traits\ControllerNamespaces;
 
 class WechatAppLoginServiceProvider extends ServiceProvider
 {
-    /**
-     * This namespace is applied to your controller routes.
-     *
-     * In addition, it is set as the URL generator's root namespace.
-     *
-     * @var string
-     */
-    protected $namespace = 'App\Http\Controllers';
+    use ControllerNamespaces;
 
     /**
      * Define your route model bindings, pattern filters, etc.
@@ -35,6 +29,14 @@ class WechatAppLoginServiceProvider extends ServiceProvider
     public function register()
     {
         $this->publishFiles();
+        $this->singletonLogin();
+    }
+
+    protected function singletonLogin()
+    {
+        app()->singleton('wechat.login', function () {
+            return new WechatAppLogin();
+        });
     }
 
     protected function publishFiles()
@@ -55,7 +57,7 @@ class WechatAppLoginServiceProvider extends ServiceProvider
      */
     protected function mapWechatRoutes()
     {
-        if (!class_exists(WechatGuard::class)) {
+        if (!file_exists(base_path('routes/wechat.php'))) {
             return;
         }
 
