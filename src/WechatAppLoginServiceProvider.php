@@ -94,11 +94,11 @@ class WechatAppLoginServiceProvider extends ServiceProvider
             // that takes an API token field from the request and matches it to the
             // user in the database or another persistence layer where users are.
             $guard = new WechatGuard(
-                auth()->createUserProvider($config['provider'] ?? null),
+                auth()->createUserProvider(isset($config['provider']) && $config['provider'] ? $config['provider'] : null),
                 $this->app['request'],
-                $config['input_key'] ?? 'api_token',
-                $config['storage_key'] ?? 'api_token',
-                $config['hash'] ?? false
+                isset($config['input_key']) && $config['input_key'] ? $config['input_key'] : 'api_token',
+                isset($config['storage_key']) && $config['storage_key'] ? $config['storage_key'] : 'api_token',
+                isset($config['hash']) && $config['hash'] ? $config['hash'] : false
             );
 
             $this->app->refresh('request', $guard, 'setRequest');
