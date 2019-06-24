@@ -32,9 +32,12 @@
             "XiaohuiLam\\Laravel\\WechatAppLogin\\Test\\": "tests/",
             "App\\": "tests/Authencatable/",
             "App\\Auth\\": "publishes/guard/",
-            "App\\Http\\Controllers\\Auth\\": "publishes/controllers/",
-            "Tests\\": "vendor/laravel/laravel/tests/"
-        }
+            "App\\Http\\Controllers\\Auth\\": "publishes/controllers/"
+        },
+        "files": [
+            "vendor/laravel/laravel/tests/CreatesApplication.php",
+            "vendor/laravel/laravel/tests/TestCase.php"
+        ]
     },
     "extra": {
         "laravel": {
