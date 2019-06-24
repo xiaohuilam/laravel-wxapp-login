@@ -17,7 +17,7 @@
     },
     "require-dev": {
         "phpunit/phpunit": "*",
-        "laravel/laravel": "5.*",
+        "laravel/laravel": "5.2.*",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "*",
         "laravel/browser-kit-testing": "*",
