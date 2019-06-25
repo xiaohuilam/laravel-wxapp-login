@@ -32,8 +32,12 @@ class LoginTest extends AbstractTest
             ]);
 
         $response = $this->post('/api/login', ['code' => $code]);
-        $this->assertEquals(200, $response->getStatusCode());
-        $this->assertTrue(Str::contains($response->getContent(), 'token'));
+        $response->assertSuccessful();
+        if (method_exists($response, 'see')) {
+            $response->see('token');
+        } else {
+            $this->assertArrayHasKey('token', $response->getOriginalContent()['data']);
+        }
     }
 
     /**
@@ -54,8 +58,10 @@ class LoginTest extends AbstractTest
 
         $response = $this->post('/api/login', ['code' => $code]);
 
-        $this->assertEquals(403, $response->getStatusCode());
-        $this->assertFalse(Str::contains($response->getContent(), 'token'));
-        $this->assertTrue(Str::contains($response->getContent(), 'bad code'));
+        if (method_exists($response, 'see')) {
+            $response->see('bad code');
+        } else {
+            $this->assertEquals('bad code', $response->getOriginalContent()['message']);
+        }
     }
 }

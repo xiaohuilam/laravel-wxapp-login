@@ -3,19 +3,21 @@ namespace XiaohuiLam\Laravel\WechatAppLogin\Test\AbstractTest;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Support\Traits\Macroable;
 use Illuminate\Contracts\Console\Kernel;
 use Xiaohuilam\LaravelResponseSuccess\ResponseServiceProvider;
 use XiaohuiLam\Laravel\WechatAppLogin\Traits\ControllerNamespaces;
 use XiaohuiLam\Laravel\WechatAppLogin\WechatAppLoginServiceProvider;
 use Overtrue\LaravelWeChat\ServiceProvider as EasywechatServiceProvider;
-use Illuminate\Support\Facades\Auth;
+use XiaohuiLam\Laravel\WechatAppLogin\Test\Traits\AssertTrait;
+use Illuminate\Http\JsonResponse;
 
 /**
- * @method \Illuminate\Http\Response post()
+ * @method \Illuminate\Foundation\Testing\TestCase|\Illuminate\Http\Response|\Illuminate\Foundation\Testing\TestResponse post()
  */
 abstract class AbstractTest extends InterTestCase
 {
-    use ControllerNamespaces;
+    use ControllerNamespaces, AssertTrait;
 
     /**
      * Creates the application.
@@ -50,6 +52,7 @@ abstract class AbstractTest extends InterTestCase
         $app->register(ResponseServiceProvider::class);
 
         $this->registerRoutes();
+        $this->registerMacros();
         $this->migrateTables();
 
         return $app;
@@ -62,6 +65,32 @@ abstract class AbstractTest extends InterTestCase
             'namespace' => $this->namespace,
         ], function () {
             require __DIR__ . '/../../publishes/routes/wechat.php';
+        });
+    }
+
+    protected function registerMacros()
+    {
+        if (!JsonResponse::class instanceof Macroable)
+        {
+            return;
+        }
+        JsonResponse::macro('see', function ($string) {
+            if (method_exists($this, 'assertStringContainsString')) {
+                return $this->assertStringContainsString($string, $this->getContent());
+            } else if (method_exists($this, 'assertContains')) {
+                return $this->assertContains($string, $this->getContent());
+            } else if (method_exists($this, 'see')) {
+                return $this->see($string);
+            }
+        });
+        JsonResponse::macro('dontSee', function ($string) {
+            if (method_exists($this, 'assertStringNotContainsString')) {
+                return $this->assertStringNotContainsString($string, $this->getContent());
+            } else if (method_exists($this, 'assertNotContains')) {
+                return $this->assertNotContains($string, $this->getContent());
+            } else if (method_exists($this, 'dontSee')) {
+                return $this->dontSee($string);
+            }
         });
     }
 

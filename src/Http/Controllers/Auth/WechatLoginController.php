@@ -16,7 +16,7 @@ class WechatLoginController extends Controller
     {
         $code = request()->input('code');
         if (!$code) {
-            abort(403, 'bad param');
+            return response()->error(403, 'bad param');
         }
 
         /**
@@ -25,7 +25,7 @@ class WechatLoginController extends Controller
         $response = Facade::login($code);
         $openid = data_get($response, 'openid');
         if (!$openid) {
-            abort(403, 'bad code');
+            return response()->error(403, 'bad code');
         }
 
         $credential = ['openid' => $openid];
