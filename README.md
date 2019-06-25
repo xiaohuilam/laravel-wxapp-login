@@ -4,13 +4,16 @@
 - Laravel 5.2 +
 - PHP 5.6 +
 
-**版本** | L5.8 | L5.7 | L5.6 | L5.5 | L5.4 | L5.3 | L5.2
+**版本** | 状态
 ---- | --- | --- | --- | --- | --- | --- | --- |
-PHP 7.3 |
-PHP 7.2 |
-PHP 7.1 |
-PHP 7.0 |
-PHP 5.6 |
+Laravel 5.8 | [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.8.*%27&label=build)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login) |
+Laravel 5.7 | [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.7.*%27&label=build)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login) |
+Laravel 5.6 | [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.6.*%27&label=build)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login) |
+Laravel 5.5 | [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.5.*%27&label=build)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login) |
+Laravel 5.4 | [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.4.*%27&label=build)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login) |
+Laravel 5.3 | [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.3.*%27&label=build)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login) |
+Laravel 5.2 | [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.2.*%27&label=build)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login) |
+
 
 ## 安装
 ```bash
