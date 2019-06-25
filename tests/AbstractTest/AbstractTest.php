@@ -56,9 +56,12 @@ abstract class AbstractTest extends InterTestCase
 
     protected function registerRoutes()
     {
-        Route::prefix('api')
-            ->namespace($this->namespace)
-            ->group(__DIR__ . '/../../publishes/routes/wechat.php');
+        Route::group([
+            'prefix' => 'api',
+            'namespace' => $this->namespace,
+        ], function () {
+            require __DIR__ . '/../../publishes/routes/wechat.php';
+        });
     }
 
     protected function migrateTables()
