@@ -11,13 +11,13 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "laravel/framework": ">=5.2.*",
+        "laravel/framework": ">=5.2.0",
         "xiaohuilam/easywechat-adpter": "*",
         "xiaohuilam/laravel-response-success": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "*",
-        "laravel/laravel": ">=5.2.*",
+        "laravel/laravel": ">=5.2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "*",
         "laravel/browser-kit-testing": "*",
