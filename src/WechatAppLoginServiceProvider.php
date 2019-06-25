@@ -61,9 +61,12 @@ class WechatAppLoginServiceProvider extends ServiceProvider
             return;
         }
 
-        Route::prefix('api')
-            ->namespace($this->namespace)
-            ->group(base_path('routes/wechat.php'));
+        Route::group([
+            'prefix' => 'api',
+            'namespace' => $this->namespace,
+        ], function () {
+            require base_path('routes/wechat.php');
+        });
     }
 
     /**
