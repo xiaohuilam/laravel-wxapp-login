@@ -2,10 +2,8 @@
 namespace XiaohuiLam\Laravel\WechatAppLogin\Test;
 
 use App\User;
-use Tests\TestCase;
 use Illuminate\Support\Str;
 use XiaohuiLam\Laravel\WechatAppLogin\Facade;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use XiaohuiLam\Laravel\WechatAppLogin\Test\AbstractTest\AbstractTest;
 
 class LoginTest extends AbstractTest
@@ -35,7 +33,7 @@ class LoginTest extends AbstractTest
 
         $response = $this->post('/api/login', ['code' => $code]);
 
-        $response->assertStatus(200);
+        $this->assertEquals(200, $response->getStatusCode());
     }
 
     /**
@@ -56,7 +54,7 @@ class LoginTest extends AbstractTest
 
         $response = $this->post('/api/login', ['code' => $code]);
 
-        $response->assertStatus(403);
-        $response->assertSee('bad code');
+        $this->assertEquals(403, $response->getStatusCode());
+        $this->assertTrue(Str::contains($response->getContent(), 'bad code'));
     }
 }

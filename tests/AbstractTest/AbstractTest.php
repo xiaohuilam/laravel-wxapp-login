@@ -11,8 +11,8 @@ use XiaohuiLam\Laravel\WechatAppLogin\WechatAppLoginServiceProvider;
 use Overtrue\LaravelWeChat\ServiceProvider as EasywechatServiceProvider;
 
 /**
- * @method \Illuminate\Foundation\Testing\TestResponse get($uri, $options)
- * @method \Illuminate\Foundation\Testing\TestResponse post($uri, $options)
+ * @method \Illuminate\Foundation\Testing\TestResponse|\Illuminate\Http\Response get($uri, $options)
+ * @method \Illuminate\Foundation\Testing\TestResponse|\Illuminate\Http\Response post($uri, $options)
  */
 abstract class AbstractTest extends InterTestCase
 {
