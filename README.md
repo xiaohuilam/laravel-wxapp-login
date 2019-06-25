@@ -1,5 +1,13 @@
 # Laravel 快速接入微信小程序
 ---
+## 版本适配
+**php \ Laravel** | Laravel5.8 | Laravel5.7 | Laravel5.6 | Laravel5.5 | Laravel5.4 | Laravel5.3 | Laravel5.2 | Laravel5.1 | Laravel5.0
+---- | --- | --- | --- | --- | --- | --- | --- | --- | ---
+PHP 7.3 |
+PHP 7.2 |
+PHP 7.1 |
+PHP 7.0 |
+PHP 5.6 |
 
 ## 安装
 ```bash

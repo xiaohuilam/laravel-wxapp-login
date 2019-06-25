@@ -1,6 +1,6 @@
 {
     "name": "xiaohuilam/laravel-wxapp-login",
-    "description": "A laravel skeleton to create wechat mini program login and guards as most quick.",
+    "description": "A laravel plugin to create wechat mini-program login api.",
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -36,8 +36,8 @@
             "App\\Http\\Controllers\\Auth\\": "publishes/controllers/",
             "Tests\\": "vendor/laravel/laravel/tests/"
         },
-        "files": [
-            "vendor/laravel/laravel/tests/TestCase.php"
+        "classmap": [
+            "vendor/laravel/laravel/tests/"
         ]
     },
     "extra": {
