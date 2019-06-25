@@ -13,24 +13,17 @@ class WechatAppLoginServiceProvider extends ServiceProvider
 {
     use ControllerNamespaces;
 
-    /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
-     */
-    public function boot()
+    public function register()
     {
+        $this->publishFiles();
+
+        $this->singletonLogin();
+
         $this->mapWechatRoutes();
 
         $this->extendAuthGuardConfig();
 
         $this->extendAuthManager();
-    }
-
-    public function register()
-    {
-        $this->publishFiles();
-        $this->singletonLogin();
     }
 
     protected function singletonLogin()
