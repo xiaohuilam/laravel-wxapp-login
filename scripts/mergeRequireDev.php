@@ -8,4 +8,4 @@ $laravelComposerJson = json_decode(file_get_contents($laravelVerUrl), true);
 
 $composerJson['require-dev'] = array_merge($composerJson['require-dev'], $laravelComposerJson['require-dev']);
 
-fwrite($composerJsonFile, str_replace('\/', '/', json_encode($composerJson)));
+file_put_contents($composerJsonFile, str_replace('\/', '/', json_encode($composerJson)));
