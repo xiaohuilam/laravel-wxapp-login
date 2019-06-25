@@ -70,10 +70,10 @@ abstract class AbstractTest extends InterTestCase
 
     protected function registerMacros()
     {
-        if (!JsonResponse::class instanceof Macroable)
-        {
+        if (!app(JsonResponse::class) instanceof Macroable) {
             return;
         }
+
         JsonResponse::macro('see', function ($string) {
             if (method_exists($this, 'assertStringContainsString')) {
                 return $this->assertStringContainsString($string, $this->getContent());
