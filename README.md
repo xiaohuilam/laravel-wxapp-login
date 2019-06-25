@@ -1,17 +1,20 @@
 # Laravel 快速接入微信小程序
----
+让 Laravel 应用3分钟内快捷接入微信小程序的扩展
+
 
 ## 版本适配
-- Laravel 5.2 +
-- PHP 5.6 +
+- ![php5.6+.svg](https://img.shields.io/badge/PHP-5.6+-4c1.svg)
+- ![laravel5.2+.svg](https://img.shields.io/badge/Laravel-5.2+-4c1.svg)
 
-[![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.8.*%27&label=Laravel%205.8)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
-[![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.7.*%27&label=Laravel%205.7)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
-[![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.6.*%27&label=Laravel%205.6)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
-[![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.5.*%27&label=Laravel%205.5)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
-[![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.4.*%27&label=Laravel%205.4)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
-[![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.3.*%27&label=Laravel%205.3)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
-[![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.2.*%27&label=Laravel%205.2)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
+## 单元测试
+- [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.8.*%27&label=5.8)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
+- [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.7.*%27&label=5.7)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
+- [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.6.*%27&label=5.6)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
+- [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.5.*%27&label=5.5)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
+- [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.4.*%27&label=5.4)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
+- [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.3.*%27&label=5.3)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
+- [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.2.*%27&label=5.2)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
+
 
 
 ## 安装
