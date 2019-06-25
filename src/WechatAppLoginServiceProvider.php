@@ -7,6 +7,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
 use App\Auth\WechatGuard;
 use XiaohuiLam\Laravel\WechatAppLogin\Traits\ControllerNamespaces;
+use Illuminate\Support\Facades\Auth;
 
 class WechatAppLoginServiceProvider extends ServiceProvider
 {
@@ -92,7 +93,7 @@ class WechatAppLoginServiceProvider extends ServiceProvider
      */
     protected function extendAuthManager()
     {
-        auth()->extend('wechat', function (Application $app, $name, $config) {
+        Auth::extend('wechat', function (Application $app, $name, $config) {
             // The token guard implements a basic API token based guard implementation
             // that takes an API token field from the request and matches it to the
             // user in the database or another persistence layer where users are.

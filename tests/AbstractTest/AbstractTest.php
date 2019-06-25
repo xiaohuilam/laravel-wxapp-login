@@ -4,16 +4,11 @@ namespace XiaohuiLam\Laravel\WechatAppLogin\Test\AbstractTest;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Contracts\Console\Kernel;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Xiaohuilam\LaravelResponseSuccess\ResponseServiceProvider;
 use XiaohuiLam\Laravel\WechatAppLogin\Traits\ControllerNamespaces;
 use XiaohuiLam\Laravel\WechatAppLogin\WechatAppLoginServiceProvider;
 use Overtrue\LaravelWeChat\ServiceProvider as EasywechatServiceProvider;
 
-/**
- * @method \Illuminate\Foundation\Testing\TestResponse|\Illuminate\Http\Response get($uri, $options)
- * @method \Illuminate\Foundation\Testing\TestResponse|\Illuminate\Http\Response post($uri, $options)
- */
 abstract class AbstractTest extends InterTestCase
 {
     use ControllerNamespaces;
@@ -37,6 +32,8 @@ abstract class AbstractTest extends InterTestCase
         config()->set('database.default', 'sqlite');
         config()->set('database.connections.sqlite.database', ':memory:');
         config()->set('app.key', 'AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
+        config()->set('auth.model', \App\Models\User::class);
+        config()->set('auth.providers.users', \App\Models\User::class);
         config()->set('wechat.mini_program.default', [
             'app_id'  => '1',
             'secret'  => '1',
