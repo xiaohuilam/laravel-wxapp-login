@@ -8,7 +8,11 @@ use Xiaohuilam\LaravelResponseSuccess\ResponseServiceProvider;
 use XiaohuiLam\Laravel\WechatAppLogin\Traits\ControllerNamespaces;
 use XiaohuiLam\Laravel\WechatAppLogin\WechatAppLoginServiceProvider;
 use Overtrue\LaravelWeChat\ServiceProvider as EasywechatServiceProvider;
+use Illuminate\Support\Facades\Auth;
 
+/**
+ * @method \Illuminate\Http\Response post()
+ */
 abstract class AbstractTest extends InterTestCase
 {
     use ControllerNamespaces;
@@ -32,8 +36,8 @@ abstract class AbstractTest extends InterTestCase
         config()->set('database.default', 'sqlite');
         config()->set('database.connections.sqlite.database', ':memory:');
         config()->set('app.key', 'AckfSECXIvnK5r28GVIWUAxmbBSjTsmF');
-        config()->set('auth.model', \App\Models\User::class);
-        config()->set('auth.providers.users', \App\Models\User::class);
+        config()->set('auth.providers.users.model', \App\Models\User::class);
+
         config()->set('wechat.mini_program.default', [
             'app_id'  => '1',
             'secret'  => '1',
