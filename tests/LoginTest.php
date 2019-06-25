@@ -3,9 +3,9 @@ namespace XiaohuiLam\Laravel\WechatAppLogin\Test;
 
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Route;
 use XiaohuiLam\Laravel\WechatAppLogin\Facade;
 use XiaohuiLam\Laravel\WechatAppLogin\Test\AbstractTest\AbstractTest;
-use Illuminate\Support\Facades\Route;
 
 class LoginTest extends AbstractTest
 {
@@ -34,7 +34,7 @@ class LoginTest extends AbstractTest
                 'openid' => $openid,
             ]);
 
-        $response = $this->post('/api/login', ['code' => $code]);
+        $response = $this->post('/api/login', $this->buildParam(['code' => $code]));
         $response->assertSuccessful();
         if (method_exists($response, 'see')) {
             $response->see('token');
@@ -59,7 +59,7 @@ class LoginTest extends AbstractTest
                 'code' => -1,
             ]);
 
-        $response = $this->post('/api/login', ['code' => $code]);
+        $response = $this->post('/api/login', $this->buildParam(['code' => $code]));
 
         if (method_exists($response, 'see')) {
             $response->see('bad code');
@@ -103,7 +103,10 @@ class LoginTest extends AbstractTest
         }
         $token = data_get($data, 'data.token');
 
+        auth()->guard($this->guard)->logout();
+
         $errmsg = 'can\'t retrive user';
+
         Route::get('/testing', function () use ($errmsg) {
             if ($user = auth()->guard($this->guard)->user()) {
                 return response()->success($user);
@@ -112,7 +115,14 @@ class LoginTest extends AbstractTest
             }
         })->middleware('auth:' . $this->guard)->name('unit.logined');
 
-        $response = $this->get('/testing', ['Authorization' => 'Bearer ' . $token]);
+        $response = $this->get('/testing', $this->buildParam(['Authorization' => 'Bearer ' . mt_rand(1, 99)]));
+        if (method_exists($response, 'see')) {
+            $response->see('Unauthenticated.');
+        } else {
+            $this->assertTrue(Str::contains($response->getContent(), 'Unauthenticated.'));
+        }
+
+        $response = $this->get('/testing', $this->buildParam([ 'Authorization' => 'Bearer ' . $token]));
         $response->assertSuccessful();
         if (method_exists($response, 'see')) {
             $response->see($openid);

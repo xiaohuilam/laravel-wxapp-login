@@ -1,16 +1,16 @@
 <?php
 namespace XiaohuiLam\Laravel\WechatAppLogin\Test\AbstractTest;
 
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Contracts\Console\Kernel;
+use XiaohuiLam\Laravel\WechatAppLogin\Test\Traits\AssertTrait;
 use Xiaohuilam\LaravelResponseSuccess\ResponseServiceProvider;
 use XiaohuiLam\Laravel\WechatAppLogin\Traits\ControllerNamespaces;
 use XiaohuiLam\Laravel\WechatAppLogin\WechatAppLoginServiceProvider;
 use Overtrue\LaravelWeChat\ServiceProvider as EasywechatServiceProvider;
-use XiaohuiLam\Laravel\WechatAppLogin\Test\Traits\AssertTrait;
-use Illuminate\Http\JsonResponse;
 
 /**
  * @method \Illuminate\Foundation\Testing\TestCase|\Illuminate\Http\Response|\Illuminate\Foundation\Testing\TestResponse post()
@@ -98,5 +98,10 @@ abstract class AbstractTest extends InterTestCase
     {
         copy(__DIR__ . '/../../publishes/migrations/2019_05_28_060312_users_add_openid.php', __DIR__ . '/../../vendor/laravel/laravel/database/migrations/2019_05_28_060312_users_add_openid.php');
         Artisan::call('migrate');
+    }
+
+    protected function buildParam($params)
+    {
+        return array_merge($params, ['Accept' => 'application/json',]);
     }
 }
