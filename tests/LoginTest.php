@@ -73,7 +73,7 @@ class LoginTest extends AbstractTest
      *
      * @return void
      */
-    public function testLogined()
+    public function testLoginedOkay()
     {
         $code = Str::random();
         $openid = Str::random();
@@ -103,7 +103,63 @@ class LoginTest extends AbstractTest
         }
         $token = data_get($data, 'data.token');
 
-        auth()->guard($this->guard)->logout();
+        $errmsg = 'can\'t retrive user';
+
+        Route::get('/testing', function () use ($errmsg) {
+            if ($user = auth()->guard($this->guard)->user()) {
+                return response()->success($user);
+            } else {
+                return response()->error(400, $errmsg);
+            }
+        })->middleware('auth:' . $this->guard)->name('unit.logined');
+
+        $response = $this->get('/testing', $this->buildParam(['Authorization' => 'Bearer ' . $token]));
+        //dd($response->response->__toString());
+        $response->assertSuccessful();
+        if (method_exists($response, 'see')) {
+            $response->see($openid);
+        } else {
+            $this->assertTrue(Str::contains($response->getContent(), $openid));
+        }
+        $this->logout();
+    }
+
+    /**
+     * 测试登陆成功之后
+     *
+     * @return void
+     */
+    public function testLoginedError()
+    {
+        $code = Str::random();
+        $openid = Str::random();
+        $user = User::create([
+            'name' => $openid,
+            'openid' => $openid,
+            'email' => $openid . '@wechat.com',
+            'password' => $openid,
+        ]);
+
+        Facade::shouldReceive('login')
+            ->with($code)
+            ->once()
+            ->andReturn([
+                'openid' => $openid,
+            ]);
+
+        $response = $this->post('/api/login', ['code' => $code]);
+        $response->assertSuccessful();
+        if (method_exists($response, 'see')) {
+            $response->see('token');
+            $json = $response->response->getContent();
+            $data = json_decode($json);
+        } else {
+            $this->assertArrayHasKey('token', $response->getOriginalContent()['data']);
+            $data = $response->getOriginalContent();
+        }
+        $token = data_get($data, 'data.token');
+
+        $this->logout();
 
         $errmsg = 'can\'t retrive user';
 
@@ -117,17 +173,9 @@ class LoginTest extends AbstractTest
 
         $response = $this->get('/testing', $this->buildParam(['Authorization' => 'Bearer ' . mt_rand(1, 99)]));
         if (method_exists($response, 'see')) {
-            $response->see('Unauthenticated.');
+            $response->see('Unauth');
         } else {
-            $this->assertTrue(Str::contains($response->getContent(), 'Unauthenticated.'));
-        }
-
-        $response = $this->get('/testing', $this->buildParam([ 'Authorization' => 'Bearer ' . $token]));
-        $response->assertSuccessful();
-        if (method_exists($response, 'see')) {
-            $response->see($openid);
-        } else {
-            $this->assertTrue(Str::contains($response->getContent(), $openid));
+            $this->assertTrue(Str::contains($response->getContent(), 'Unauth'));
         }
     }
 }

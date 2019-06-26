@@ -102,6 +102,11 @@ abstract class AbstractTest extends InterTestCase
 
     protected function buildParam($params)
     {
-        return array_merge($params, ['Accept' => 'application/json',]);
+        return array_merge($params, ['X-Requested-With' => 'XMLHttpRequest', 'Accept' => 'application/json',]);
+    }
+
+    protected function logout()
+    {
+        auth()->guard($this->guard)->logout();
     }
 }
