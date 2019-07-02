@@ -11,11 +11,12 @@ use Xiaohuilam\LaravelResponseSuccess\ResponseServiceProvider;
 use XiaohuiLam\Laravel\WechatAppLogin\Traits\ControllerNamespaces;
 use XiaohuiLam\Laravel\WechatAppLogin\WechatAppLoginServiceProvider;
 use Overtrue\LaravelWeChat\ServiceProvider as EasywechatServiceProvider;
+use XiaohuiLam\Laravel\Test\TestCase;
 
 /**
  * @method \Illuminate\Foundation\Testing\TestCase|\Illuminate\Http\Response|\Illuminate\Foundation\Testing\TestResponse post()
  */
-abstract class AbstractTest extends InterTestCase
+abstract class AbstractTest extends TestCase
 {
     use ControllerNamespaces, AssertTrait;
 

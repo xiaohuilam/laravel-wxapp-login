@@ -21,7 +21,8 @@
         "fzaninotto/faker": "*",
         "mockery/mockery": "*",
         "laravel/browser-kit-testing": "*",
-        "squizlabs/php_codesniffer": "*"
+        "squizlabs/php_codesniffer": "*",
+        "xiaohuilam/laravel-test": ">=v0.0.1"
     },
     "autoload": {
         "psr-4": {
@@ -34,12 +35,8 @@
             "App\\": "vendor/laravel/laravel/app/",
             "App\\Models\\": "tests/Authencatable/",
             "App\\Auth\\": "publishes/guard/",
-            "App\\Http\\Controllers\\Auth\\": "publishes/controllers/",
-            "Tests\\": "vendor/laravel/laravel/tests/"
-        },
-        "classmap": [
-            "vendor/laravel/laravel/tests/"
-        ]
+            "App\\Http\\Controllers\\Auth\\": "publishes/controllers/"
+        }
     },
     "extra": {
         "laravel": {
