@@ -7,6 +7,7 @@
 - ![laravel5.2+.svg](https://img.shields.io/badge/Laravel-5.2+-4c1.svg)
 
 ## 单元测试
+- [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%276.0.*%27&label=6.0)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
 - [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.8.*%27&label=5.8)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
 - [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.7.*%27&label=5.7)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
 - [![build.svg](https://badges.herokuapp.com/travis/xiaohuilam/laravel-wxapp-login?branch=master&env=LARAVEL=%275.6.*%27&label=5.6)](https://travis-ci.org/xiaohuilam/laravel-wxapp-login)
