@@ -15,13 +15,13 @@ if (json_last_error() !== JSON_ERROR_NONE || !$latestLaravelVerContent || !$json
     exit(1);
 }
 
-$ver = $json->body;
+$vers = json_decode($json->body, true);
 
 $composerJsonFile = __DIR__ . '/../composer.json';
 $composerJson = json_decode(file_get_contents($composerJsonFile), true);
 
 $laravelVer = str_replace('.*', '', $composerJson['require-dev']['laravel/laravel']);
-$laravelVerUrl = 'https://raw.githubusercontent.com/laravel/laravel/' . ($laravelVer == $ver ? 'master' : $laravelVer) . '/composer.json';
+$laravelVerUrl = 'https://raw.githubusercontent.com/laravel/laravel/' . (in_array($laravelVer, $vers) ? 'master' : $laravelVer) . '/composer.json';
 $laravelComposerJson = json_decode(file_get_contents($laravelVerUrl, false, $opt), true);
 
 $composerJson['require-dev'] = array_merge($composerJson['require-dev'], $laravelComposerJson['require-dev']);
