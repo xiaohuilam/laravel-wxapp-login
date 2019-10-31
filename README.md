@@ -106,7 +106,7 @@ wx.login({
         data: {
             code: res.code
         },
-        headers: {
+        header: {
             Authorization: null
         },
         success: (response) => {
